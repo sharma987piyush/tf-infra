@@ -1,0 +1,21 @@
+---
+- name: Installing packages for e-commerce
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Install required packages
+      yum:
+        name:
+          - maven
+          - git
+          - openjdk-11-jdk
+        state: present
+
+    - name: Enable the service git
+      service:
+        name: git
+        state: enabled
+    - name: Enable the service maven
+      service:
+        name: maven
+        state: enabled
